@@ -1,0 +1,47 @@
+<html>
+    <head>
+        <title>
+
+        </title>
+        <link rel="stylesheet" href="/static/style.css">
+    </head>
+    <body>
+        <h1>Welcome {{users.first_name}}</h1>
+        <div>
+            <a href="/sighting/dashboard">Back to Sightings</a>
+            <a href="/logout">Log Out</a>
+        </div>
+        {% with messages = get_flashed_messages() %}<!-- THIS NEEDS TO BE MODIFIED -->
+            {% if messages %}
+                <div role="alert">
+                    {% for message in messages %}
+                        <p>{{message}}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+        <form action="/sightings/editing_sighting" method="post">
+            <div>
+                <label for="name">Location</label>
+                <input type="text" name="location"placeholder="name" value="{{sightings.location}}">
+            </div>
+            <div>
+                <label for="description">What Happened:</label>
+                <textarea type="text" name="what_happened"rows="5">{{sightings.what_happened}}</textarea>
+            </div>
+            <div>
+                <label for="date_made">Date of Sighting:</label>
+                <input type="date" name="date_of_sighting" value="{{sightings.date_of_sighting}}" required ><!-- required notifies when you need this-->
+            </div>
+            <div>
+                <label for="number_of_sasquatches">Number of Sasquatches</label>
+                <br>
+                <input type="number" name="number_of_sasquatches" value="{{sightings.number_of_sasquatches}}"  min="0">
+            </div>
+            <input type="hidden" name="user_id" value="{{sightings.creator.id}}"><!--------------------------------------->
+            <input type="hidden" name="id" value="{{sightings.id}}"><!--------------------------------------->
+            <input type="submit" value="Submit">
+            
+        </form>
+    </body>
+</html>

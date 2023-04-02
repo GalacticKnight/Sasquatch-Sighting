@@ -1,0 +1,37 @@
+<html>
+    <head>
+        <title>
+
+        </title>
+        <link rel="stylesheet" href="/static/style.css">
+    </head>
+    <body>
+        <h1>Report a sighting</h1>
+        <div>
+            <a href="/sighting/dashboard">Back to sighting</a>
+            <a href="/logout">Log Out</a>
+        </div>
+        <form action="/sightings/add_sighting" method="post"><!--this needs to match the route you are sending !!!!!!!!-->
+            <div>
+                <label for="name">Location</label>
+                <input type="text" name="location"placeholder="name">
+            </div>
+            <div>
+                <label for="description">what_happened</label>
+                <textarea type="text" name="what_happened"rows="5"></textarea>
+            </div>
+            <div>
+                <label for="date_made">Date of Sighting:</label>
+                <input type="date" name="date_of_sighting" required><!-- required notifies when you need this-->
+            </div>
+            <div>
+                <label for="number_of_sasquatches">Number of Sasquatches</label>
+                <br>
+                <input type="number" name="number_of_sasquatches" id="number_of_sasquatches"  min="0">
+            </div>
+            <input type="hidden" name="users_id" value="{{session['user_id']}}"><!--session is a dictionary and i gave it a key of user_id instead of users_id!!!!!!!!!!!!!!!!!!!!!thank you -->
+            <!-- value -->
+            <input type="submit" value="Submit">
+        </form>
+    </body>
+</html>

@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <title>
+
+        </title>
+        <link rel="stylesheet" href="/static/style.css">
+    </head>
+    <body>
+        <h1>Sasquatch sighting</h1><!--this is why we need session-->
+        <div>
+            <a href="/sightings/create">New sighting</a>
+            <a href="/logout">Log Out</a>
+        </div>
+                {% for sighting in sightings %}
+                <div>
+                    <p>{{sighting.location}}</p>
+                    <p>{{sighting.date_made}}</p>
+                    <p>{{sighting.creator.first_name}}</p>
+                    <div>
+                        <a href="/sightings/view_sighting/{{sighting.id}}">Instructions</a>
+                        {% if sighting.creator.id == user.id: %}
+                        <a href="/sightings/edit_sighting/{{sighting.id}}">Edit</a>
+                        <a href="/sightings/delete/{{sighting.id}}">Delete</a>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endfor %}
+    </body>
+</html>

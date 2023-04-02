@@ -1,0 +1,36 @@
+<html>
+    <head>
+        <title>
+
+        </title>
+        <link rel="stylesheet" href="/static/style.css">
+    </head>
+    <body>
+        <div>
+            <h1>Welcome {{users.first_name}}</h1>
+            <div>
+                <a href="/sighting/dashboard">Back to Recipe</a>
+                <a href="/logout">Log Out</a>
+            </div>
+        </div>
+        <div>
+            <h3>{{sightings.location}}</h3>
+            
+        </div>
+        <div>
+            <div>
+                <p>What Happened:</p>
+                <p>{{sightings.what_happened}}</p>
+            </div>
+            <div>
+                <p># of Sasquatches:</p>
+                <p>{{sightings.number_of_sasquatches}}</p>
+            </div>
+            <div>
+                <p>Date Made:</p>
+                <p>{{sightings.date_made}}</p>
+            </div>
+            <h4>Posted by: {{users.first_name}}</h4>
+        </div>
+    </body>
+</html>
