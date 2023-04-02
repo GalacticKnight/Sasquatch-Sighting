@@ -35,3 +35,5 @@ def registering():
 def logout():
     session.clear()
     return redirect('/user/LoginRegister')
+    #hello
+    
